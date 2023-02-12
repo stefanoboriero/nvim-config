@@ -219,7 +219,7 @@ local servers = {
   -- rust_analyzer = {},
   -- tsserver = {},
 
-  sumneko_lua = {
+  lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
@@ -236,6 +236,9 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Setup mason so it can manage external tooling
 require('mason').setup()
+
+-- Speficically require clangd since it can't be installed via Mason on ARM64
+require'lspconfig'.clangd.setup{}
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
