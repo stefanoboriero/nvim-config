@@ -92,6 +92,13 @@ require('packer').startup(function(use)
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
 
+  use {
+    "folke/which-key.nvim",
+      config = function()
+        require("which-key").setup({})
+      end
+  }
+
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
@@ -102,5 +109,4 @@ require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
-
 
