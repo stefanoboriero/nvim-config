@@ -72,8 +72,9 @@ require('packer').startup(function(use)
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
-  use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
+  use {'catppuccin/nvim', as = 'catppuccin' }
+  use {'akinsho/bufferline.nvim', tag = 'v3.*', requires = 'nvim-tree/nvim-web-devicons'}
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
@@ -83,6 +84,15 @@ require('packer').startup(function(use)
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+  use {'akinsho/toggleterm.nvim', tag = '*',
+      config = function()
+        require('toggleterm').setup()
+      end
+  }
+  use {'akinsho/git-conflict.nvim', tag = '*',
+      config = function()
+        require('git-conflict').setup()
+      end}
 
   use {
     'nvim-tree/nvim-tree.lua',
@@ -93,9 +103,9 @@ require('packer').startup(function(use)
   }
 
   use {
-    "folke/which-key.nvim",
+    'folke/which-key.nvim',
       config = function()
-        require("which-key").setup({})
+        require('which-key').setup({})
       end
   }
 
