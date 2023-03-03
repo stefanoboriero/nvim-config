@@ -84,11 +84,6 @@ require('packer').startup(function(use)
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
-  use {'akinsho/toggleterm.nvim', tag = '*',
-      config = function()
-        require('toggleterm').setup()
-      end
-  }
   use {'akinsho/git-conflict.nvim', tag = '*',
       config = function()
         require('git-conflict').setup()
