@@ -33,7 +33,7 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 vim.opt.updatetime = 50
-
+vim.opt.colorcolumn = "120"
 
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex, {desc = "NetRW"})
 vim.keymap.set("n", "<leader>l", vim.cmd.Lazy, {desc = "Lazy"})

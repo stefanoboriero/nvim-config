@@ -35,4 +35,4 @@ monokai.setup({
 
 monokai.load()
 
-vim.keymap.set("n", "<leader>F", vim.lsp.buf.format, { desc = "Format" })
+vim.cmd("highlight ColorColumn guibg=#31322c")
