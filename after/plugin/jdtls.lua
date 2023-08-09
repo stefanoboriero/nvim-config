@@ -120,6 +120,8 @@ local function enable_debugger(bufnr)
 
   vim.keymap.set('n', '<leader>rtc', "<cmd>lua require('jdtls').test_class()<cr>", {buffer = bufnr, desc="Run Test Class"})
   vim.keymap.set('n', '<leader>rtm', "<cmd>lua require('jdtls').test_nearest_method()<cr>", {buffer = bufnr, desc = "Run Test Method"})
+  vim.keymap.set('n', '<leader>ctG', "<cmd>lua require('jdtls.tests').generate()<cr>", {buffer = bufnr, desc = "Geneate Test Method"})
+  vim.keymap.set('n', '<leader>ctg', "<cmd>lua require('jdtls.tests').goto_subjects()<cr>", {buffer = bufnr, desc = "Goto Test Method"})
 end
 
 local function jdtls_on_attach(client, bufnr)
