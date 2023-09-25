@@ -37,8 +37,6 @@ vim.opt.colorcolumn = "120"
 
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex, {desc = "NetRW"})
 vim.keymap.set("n", "<leader>l", vim.cmd.Lazy, {desc = "Lazy"})
-vim.keymap.set("n", "<leader>F", vim.lsp.buf.format, {desc = "Format"})
-
 
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
