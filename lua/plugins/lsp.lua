@@ -6,7 +6,13 @@ return {
         { 'neovim/nvim-lspconfig' }, -- Required
         {                            -- Optional
             'williamboman/mason.nvim',
-            build = ":MasonUpdate"
+            build = ":MasonUpdate",
+            opts = {
+                registries = {
+                    'github:nvim-java/mason-registry',
+                    'github:mason-org/mason-registry',
+                },
+            },
         },
         { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
