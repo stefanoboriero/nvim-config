@@ -8,12 +8,12 @@ wk.register({
         name = "View",
         c = {
             name = "Code",
-      }
+        }
     },
     r = {
         name = "Run"
     },
-}, {prefix = "<leader>"})
+}, { prefix = "<leader>" })
 
 wk.register({
     g = {
@@ -28,7 +28,7 @@ wk.register({
             name = "Extract"
         }
     },
-}, {prefix = "<leader>"})
+}, { prefix = "<leader>" })
 
 wk.register({
     d = {
@@ -37,4 +37,4 @@ wk.register({
             name = "Step"
         }
     },
-}, {prefix = "<leader>"})
+}, { prefix = "<leader>" })
