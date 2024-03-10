@@ -39,7 +39,7 @@ lsp.on_attach(function(client, bufnr)
         vim.lsp.buf.signature_help()
     end, opts)
     vim.keymap.set("n", "<leader>F", function()
-        require("conform").format({ bufnr = bufnr, lsp_fallback = true })
+        require("conform").format({ lsp_fallback = true })
     end, { desc = "Format" })
 end)
 
