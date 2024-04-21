@@ -1,14 +1,14 @@
 -- Install lazy plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -35,8 +35,8 @@ vim.opt.termguicolors = true
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "120"
 
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex, {desc = "NetRW"})
-vim.keymap.set("n", "<leader>l", vim.cmd.Lazy, {desc = "Lazy"})
+vim.keymap.set("n", "<leader>e", vim.cmd.Ex, { desc = "NetRW" })
+vim.keymap.set("n", "<leader>l", vim.cmd.Lazy, { desc = "Lazy" })
 
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -46,7 +46,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
@@ -56,8 +56,4 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 
 -- load plugins
-require("lazy").setup("plugins", {
-    install = {
-        colorscheme = {'monokai-pro'}
-    }
-})
+require("lazy").setup("plugins", {})
