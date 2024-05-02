@@ -13,14 +13,4 @@ return {
     {
         'andy-bell101/neotest-java'
     },
-    {
-        'mfussenegger/nvim-dap'
-    },
-    {
-        'mfussenegger/nvim-dap-python'
-    },
-    {
-        'rcarriga/nvim-dap-ui',
-        dependencies = { "mfussenegger/nvim-dap" }
-    },
 }

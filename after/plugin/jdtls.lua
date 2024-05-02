@@ -118,8 +118,8 @@ local function enable_debugger(bufnr)
     require('jdtls').setup_dap({ hotcodereplace = 'auto' })
     require('jdtls.dap').setup_dap_main_class_configs()
 
-    vim.keymap.set('n', '<leader>rtc', "<cmd>lua require('jdtls').test_class()<cr>",
-        { buffer = bufnr, desc = "Run Test Class" })
+    vim.keymap.set('n', '<leader>rta', "<cmd>lua require('jdtls').test_class()<cr>",
+        { buffer = bufnr, desc = "Run Test All" })
     vim.keymap.set('n', '<leader>rtm', "<cmd>lua require('jdtls').test_nearest_method()<cr>",
         { buffer = bufnr, desc = "Run Test Method" })
     vim.keymap.set('n', '<leader>rtl', "<cmd>lua require('dap').run_last()<cr>",
