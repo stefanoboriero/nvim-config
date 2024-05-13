@@ -54,6 +54,9 @@ vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
+vim.keymap.set("o", "w", "iw", { remap = false })
+vim.keymap.set("o", "(", "i(", { remap = false })
+vim.keymap.set("o", '"', 'i"', { remap = false })
 
 -- load plugins
 require("lazy").setup("plugins", {})
