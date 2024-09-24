@@ -5,8 +5,12 @@ telescope.setup {
             hidden = true,
             file_ignore_patterns = { ".git/" },
         }
+    },
+    extensions = {
+        ["ui-select"] = {require("telescope.themes").get_dropdown {}}
     }
 }
+telescope.load_extension("ui-select")
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find Files" })

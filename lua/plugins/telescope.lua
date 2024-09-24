@@ -4,4 +4,5 @@ return {
         version = '*',
         dependencies = { 'nvim-lua/plenary.nvim' },
     },
+    {'nvim-telescope/telescope-ui-select.nvim' }
 }
