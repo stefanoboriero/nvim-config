@@ -13,4 +13,8 @@ return {
     {
         'andy-bell101/neotest-java'
     },
+    {
+        'fredrikaverpil/neotest-golang',
+        version = '*'
+    },
 }

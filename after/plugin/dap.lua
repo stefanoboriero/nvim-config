@@ -1,3 +1,14 @@
+local delve_install = require('mason-registry')
+    .get_package('delve')
+    :get_install_path()
+
+require('dap-go').setup(
+    {
+        delve = {
+            path = delve_install .. '/dlv'
+        }
+    }
+)
 require("nvim-dap-virtual-text").setup()
 require('dap-python').setup()
 require("dapui").setup(
