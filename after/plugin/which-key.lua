@@ -1,40 +1,13 @@
 local wk = require('which-key')
 
-wk.register({
-    f = {
-        name = "Find",
-    },
-    v = {
-        name = "View",
-        c = {
-            name = "Code",
-        }
-    },
-    r = {
-        name = "Run"
-    },
-}, { prefix = "<leader>" })
-
-wk.register({
-    g = {
-        name = "Goto",
-    },
-})
-
-wk.register({
-    c = {
-        name = "Code",
-        e = {
-            name = "Extract"
-        }
-    },
-}, { prefix = "<leader>" })
-
-wk.register({
-    d = {
-        name = "Debug",
-        s = {
-            name = "Step"
-        }
-    },
-}, { prefix = "<leader>" })
+wk.add(
+    { "<leader>f", group = "Find" },
+    { "<leader>v", group = "View" },
+    { "<leader>vc", group = "Code" },
+    { "<leader>r", group = "run" },
+    { "<leader>c", group = "Code" },
+    { "<leader>ce", group = "Extract" },
+    { "<leader>d", group = "Debug" },
+    { "<leader>ds", group = "Step" },
+    {"g", group = "Goto"}
+)
