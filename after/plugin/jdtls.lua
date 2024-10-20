@@ -7,6 +7,7 @@ local root_files = {
     'gradlew',
     'pom.xml',
     'build.gradle',
+    'build.gradle.kts',
 }
 
 local features = {
@@ -78,6 +79,22 @@ local function get_jdtls_paths()
 
     if java_debug_bundle[1] ~= '' then
         vim.list_extend(path.bundles, java_debug_bundle)
+    end
+
+    ---
+    -- Include spring-boot-tools bundles if present
+    ---
+    local spring_boot_install = require('mason-registry')
+        .get_package('spring-boot-tools')
+        :get_install_path()
+
+    local spring_boot_tools_bundles = vim.split(
+        vim.fn.glob(spring_boot_install .. '/extension/jars/*.jar'),
+        '\n'
+    )
+
+    if spring_boot_tools_bundles[1] ~= '' then
+        vim.list_extend(path.bundles, spring_boot_tools_bundles)
     end
 
     ---

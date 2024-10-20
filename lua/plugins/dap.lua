@@ -7,6 +7,7 @@ return {
     },
     {
         'rcarriga/nvim-dap-ui',
+        version = '*',
         dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" }
     },
     {
