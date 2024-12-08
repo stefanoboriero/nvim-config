@@ -18,4 +18,10 @@ return {
         'rcasia/neotest-java',
         ft = 'java'
     },
+    {
+        'fredrikaverpil/neotest-golang',
+    },
+    {
+        'leoluz/nvim-dap-go',
+    },
 }

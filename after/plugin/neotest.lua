@@ -3,6 +3,7 @@ require("neotest").setup({
         require("neotest-python"),
         require("neotest-jest"),
         require("neotest-java"),
+        require("neotest-golang"),
     }
 })
 
