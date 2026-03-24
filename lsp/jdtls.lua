@@ -1,4 +1,3 @@
-local java_cmds = vim.api.nvim_create_augroup('java_cmds', { clear = true })
 local cache_vars = {}
 
 local root_files = {
@@ -288,7 +287,7 @@ local function jdtls_setup(event)
 
     -- This starts a new client & server,
     -- or attaches to an existing client & server depending on the `root_dir`.
-    jdtls.start_or_attach({
+    return {
         cmd = cmd,
         settings = lsp_settings,
         on_attach = jdtls_on_attach,
@@ -300,9 +299,7 @@ local function jdtls_setup(event)
         init_options = {
             bundles = path.bundles,
         },
-    })
+    }
 end
 
-jdtls_setup()
-
-return {}
+return jdtls_setup()

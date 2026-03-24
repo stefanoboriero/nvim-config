@@ -7,7 +7,7 @@ vim.pack.add({
     {src = 'https://github.com/saghen/blink.cmp', version= "v1" }
 })
 
-vim.lsp.enable({ 'lua_ls', 'gopls' })
+vim.lsp.enable({ 'lua_ls', 'gopls', 'jdtls' })
 
 require("mason").setup()
 require("blink.cmp").setup()
