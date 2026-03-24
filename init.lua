@@ -1,18 +1,3 @@
--- Install lazy plugin manager
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
-end
-vim.opt.rtp:prepend(lazypath)
-
-
 -- Setting up editor configuration
 vim.g.mapleader = " "
 vim.opt.guicursor = "n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor"
@@ -58,5 +43,3 @@ vim.keymap.set("o", "w", "iw", { remap = false })
 vim.keymap.set("o", "(", "i(", { remap = false })
 vim.keymap.set("o", '"', 'i"', { remap = false })
 
--- load plugins
-require("lazy").setup("plugins", {})
