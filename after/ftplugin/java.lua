@@ -27,34 +27,27 @@ local function get_jdtls_paths()
     local path = {}
 
     path.data_dir = vim.fn.stdpath('cache') .. '/nvim-jdtls'
-
-    local jdtls_install = require('mason-registry')
-        .get_package('jdtls')
-        :get_install_path()
-
-    local lombok_install = require('mason-registry')
-        .get_package('lombok-nightly')
-        :get_install_path()
+    local jdtls_install = vim.fn.expand("$MASON/share/jdtls")
+    local lombok_install = vim.fn.expand("$MASON/share/lombok-nightly")
 
     path.java_agent = lombok_install .. '/lombok.jar'
     path.launcher_jar = vim.fn.glob(jdtls_install .. '/plugins/org.eclipse.equinox.launcher_*.jar')
 
-    if vim.fn.has('mac') == 1 then
-        path.platform_config = jdtls_install .. '/config_mac'
-    elseif vim.fn.has('unix') == 1 then
-        path.platform_config = jdtls_install .. '/config_linux'
-    elseif vim.fn.has('win32') == 1 then
-        path.platform_config = jdtls_install .. '/config_win'
-    end
+    -- if vim.fn.has('mac') == 1 then
+    --     path.platform_config = jdtls_install .. '/config_mac'
+    -- elseif vim.fn.has('unix') == 1 then
+    --     path.platform_config = jdtls_install .. '/config_linux'
+    -- elseif vim.fn.has('win32') == 1 then
+    --     path.platform_config = jdtls_install .. '/config_win'
+    -- end
 
+    path.platform_config = jdtls_install .. '/config'
     path.bundles = {}
 
     ---
     -- Include java-test bundle if present
     ---
-    local java_test_path = require('mason-registry')
-        .get_package('java-test')
-        :get_install_path()
+    local java_test_path = vim.fn.expand('$MASON/share/java-test')
 
     local java_test_bundle = vim.split(
         vim.fn.glob(java_test_path .. '/extension/server/*.jar'),
@@ -68,12 +61,10 @@ local function get_jdtls_paths()
     ---
     -- Include java-debug-adapter bundle if present
     ---
-    local java_debug_path = require('mason-registry')
-        .get_package('java-debug-adapter')
-        :get_install_path()
+    local java_debug_path = vim.fn.expand('$MASON/share/java-debug-adapter')
 
     local java_debug_bundle = vim.split(
-        vim.fn.glob(java_debug_path .. '/extension/server/com.microsoft.java.debug.plugin-*.jar'),
+        vim.fn.glob(java_debug_path .. '/com.microsoft.java.debug.plugin-*.jar'),
         '\n'
     )
 
@@ -84,9 +75,7 @@ local function get_jdtls_paths()
     ---
     -- Include spring-boot-tools bundles if present
     ---
-    local spring_boot_install = require('mason-registry')
-        .get_package('spring-boot-tools')
-        :get_install_path()
+    local spring_boot_install = vim.fn.expand('$MASON/share/spring-boot-tools')
 
     local spring_boot_tools_bundles = vim.split(
         vim.fn.glob(spring_boot_install .. '/extension/jars/*.jar'),
@@ -190,12 +179,12 @@ local function jdtls_setup(event)
     if cache_vars.capabilities == nil then
         jdtls.extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
-        local ok_cmp, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
-        cache_vars.capabilities = vim.tbl_deep_extend(
-            'force',
-            vim.lsp.protocol.make_client_capabilities(),
-            ok_cmp and cmp_lsp.default_capabilities() or {}
-        )
+        -- local ok_cmp, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
+        -- cache_vars.capabilities = vim.tbl_deep_extend(
+        --     'force',
+        --     vim.lsp.protocol.make_client_capabilities(),
+        --     ok_cmp and cmp_lsp.default_capabilities() or {}
+        -- )
     end
 
     -- The command that starts the language server
@@ -314,11 +303,6 @@ local function jdtls_setup(event)
     })
 end
 
-vim.api.nvim_create_autocmd('FileType', {
-    group = java_cmds,
-    pattern = { 'java' },
-    desc = 'Setup jdtls',
-    callback = jdtls_setup,
-})
+jdtls_setup()
 
 return {}
