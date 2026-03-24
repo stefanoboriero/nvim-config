@@ -43,3 +43,64 @@ vim.keymap.set("o", "w", "iw", { remap = false })
 vim.keymap.set("o", "(", "i(", { remap = false })
 vim.keymap.set("o", '"', 'i"', { remap = false })
 
+-- Plugin installation
+vim.pack.add({"https://github.com/windwp/nvim-autopairs"})
+require("nvim-autopairs").setup({})
+
+vim.pack.add({ 'https://github.com/ellisonleao/gruvbox.nvim'})
+vim.cmd.colorscheme "gruvbox"
+vim.cmd("highlight ColorColumn guibg=#31322c")
+
+vim.pack.add({ 'https://github.com/stevearc/conform.nvim' })
+
+require("conform").setup({
+    formatters_by_ft = {
+        python = { "ruff_format" },
+        -- Use a sub-list to run only the first available formatter
+        javascript = { "prettierd", "prettier", stop_after_first = true },
+        typescript = { "prettierd", "prettier", stop_after_first = true },
+        typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+    },
+})
+
+vim.pack.add( {"https://github.com/tpope/vim-fugitive"} )
+
+vim.pack.add( {'https://github.com/echasnovski/mini.indentscope'})
+vim.opt.list = true
+vim.opt.listchars = { tab = "⇥ ", leadmultispace = "┊   ", trail = "␣", nbsp = "⍽" }
+
+require("mini.indentscope").setup({
+    symbol = "╎",
+    options = {
+        try_as_border = true
+    }
+})
+
+vim.pack.add({ 
+    'https://github.com/nvim-tree/nvim-web-devicons',
+    'https://github.com/nvim-lualine/lualine.nvim'
+})
+
+require('lualine').setup {
+    options = {
+        -- ...
+        theme = 'gruvbox'
+        -- ...
+    }
+}
+
+vim.pack.add({'https://github.com/folke/which-key.nvim'})
+
+local wk = require('which-key')
+
+wk.add(
+    { "<leader>f", group = "Find" },
+    { "<leader>v", group = "View" },
+    { "<leader>vc", group = "Code" },
+    { "<leader>r", group = "run" },
+    { "<leader>c", group = "Code" },
+    { "<leader>ce", group = "Extract" },
+    { "<leader>d", group = "Debug" },
+    { "<leader>ds", group = "Step" },
+    {"g", group = "Goto"}
+)
